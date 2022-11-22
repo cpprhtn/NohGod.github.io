@@ -14,7 +14,7 @@ order: 4
 
 <br/><br/>
 
-![NohDaeIl.jpg](/assets/img/about/NohDaeIl.jpg){:height=150 .align-center}
+![NohDaeIl.jpg](/assets/img/about/NohDaeIl.jpg){:height="150px" .align-center}
 
 <br/>
 
@@ -25,7 +25,7 @@ order: 4
 
 <br/><br/>
 
-![cpp.jpg](/assets/img/about/cpp.jpg){:height=150 .align-center}
+![cpp.jpg](/assets/img/about/cpp.jpg){:height="150px" .align-center}
 
 <br/>
 
@@ -36,7 +36,7 @@ order: 4
 
 <br/><br/>
 
-![pkw.png](/assets/img/about/pkw.png){:height=150 .align-center}
+![pkw.png](/assets/img/about/pkw.png){:height="150px" .align-center}
 
 <br/>
 
@@ -47,7 +47,7 @@ order: 4
 
 <br/><br/>
 
-![bear.jpg](/assets/img/about/bear.jpg){:height=150 .align-center}
+![bear.jpg](/assets/img/about/bear.jpg){:height="150px" .align-center}
 
 <br/>
 
@@ -58,7 +58,7 @@ order: 4
 
 <br/><br/>
 
-![aim.jpg](/assets/img/about/aim.png){:height=150 .align-center}
+![aim.jpg](/assets/img/about/aim.png){:height="150px" .align-center}
 
 <br/>
 
