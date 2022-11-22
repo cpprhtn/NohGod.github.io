@@ -13,7 +13,7 @@ order: 4
 잘못된 내용에 대한 첨언은 언제나 감사합니다.
 
 <div align="center" style="margin: 50px auto 20px auto;">
-    <img src="../assets/img/about/NohDaeIl.jpg" height="150px">
+    <img src="../assets/img/about/NohDaeIl.jpg" style="height: 300px">
 </div>
 
 - 도비 대장 겸 물주: 노대일 (Daeil Noh)
@@ -22,7 +22,7 @@ order: 4
 - Blog: [https://blog.naver.com/nohdi1991](https://blog.naver.com/nohdi1991)
 
 <div align="center" style="margin: 50px auto 20px auto;">
-    <img src="../assets/img/about/cpp.jpg" height="150px">
+    <img src="../assets/img/about/cpp.jpg" style="height: 300px">
 </div>
 
 - 도비 대장의 도비 1: 이준원 (Jun-Won Lee)
@@ -31,7 +31,7 @@ order: 4
 - Github: [https://github.com/cpprhtn](https://github.com/cpprhtn)
 
 <div align="center" style="margin: 50px auto 20px auto;">
-    <img src="../assets/img/about/pkw.png" height="150px">
+    <img src="../assets/img/about/pkw.png" style="height: 300px">
 </div>
 
 - 도비 대장의 도비 2: 박경원 (Kyeong-Won Park)
@@ -40,7 +40,7 @@ order: 4
 - Github : [https://github.com/watershot](https://github.com/watershot)
 
 <div align="center" style="margin: 50px auto 20px auto;">
-    <img src="../assets/img/about/bear.jpg" width="150px">
+    <img src="../assets/img/about/bear.jpg" style="height: 300px">
 </div>
 
 - 도비 대장의 도비 3: 김도균 (Do-Kyun Kim)
@@ -49,7 +49,7 @@ order: 4
 - Github : [https://github.com/jasper200207](https://github.com/jasper200207)
 
 <div align="center" style="margin: 50px auto 20px auto;">
-    <img src="../assets/img/about/aim.png" width="150px">
+    <img src="../assets/img/about/aim.png" style="height: 300px">
 </div>
 
 - 도비 대장의 도비 4: 조준형 (Jun-Hyeoung Jo)
