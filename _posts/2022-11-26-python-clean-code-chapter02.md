@@ -1,5 +1,5 @@
 ---
-title: 파이썬 클린코드 Chapter01
+title: 파이썬 클린코드 Chapter02
 author: 이준원
 date: 2022-11-26 12:00:00 +0900
 categories: [스터디, Python]
