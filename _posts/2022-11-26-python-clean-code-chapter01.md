@@ -51,11 +51,10 @@ class CustomClass:
 """
 
     def custom_function(param):
-        '''
+        """
         함수의 문서화 내용을 입력합니다.
-        '''
-        ... 코드  ...
-
+        """
+        # ... 코드  ...
 ```
 
 이를 이용하여 다음과 같은 문서를 만들 수 있다.
@@ -111,7 +110,6 @@ def main(url):
 
 if __name__ == '__main__':
     main(sys.argv[1])
-
 ```
 
 - 모듈 불러오기
@@ -120,7 +118,7 @@ if __name__ == '__main__':
 > help(words)
 ```
 
-출력결과
+- 출력결과
 ```py
 Help on module words:
 
@@ -176,7 +174,6 @@ def locate(latitude: float, longitude: float) -> Point:
 ```py
 def launch_task(delay_in_seconds):
     ...
-
 ```
 여기에서 delay_in_seconds 파라미터는 많은 정보를 담고 있는 것 같아보이지만 사실은 충분한 정보를 제공하지 못하고 있다.
 
