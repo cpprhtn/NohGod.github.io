@@ -56,7 +56,6 @@ class CustomClass:
         함수의 문서화 내용을 입력합니다.
         """
         # ... 코드  ...
-
 ```
 
 이를 이용하여 다음과 같은 문서를 만들 수 있다.
@@ -113,7 +112,6 @@ def main(url):
 
 if __name__ == '__main__':
     main(sys.argv[1])
-
 ```
 
 - 모듈 불러오기
@@ -121,7 +119,6 @@ if __name__ == '__main__':
 ```py
 > import words
 > help(words)
-
 ```
 
 - 출력결과
@@ -153,10 +150,9 @@ FUNCTIONS
         items를 print
         :param items: 
         :return:
-        
+
 FILE
     c:\users\cpprh\desktop\words.py
-
 ```
 
 
