@@ -2,8 +2,8 @@
 title: Blog 포스팅 하기
 author: 김도균
 date: 2022-11-22 23:37:00 +0900
-categories: [스터디, MySQL]
-tags: [MySQL, 쿼리, 컴퓨터공학, 데이터베이스]
+categories: [기타, 블로그]
+tags: [Markdown, Jekyll, git, 컴퓨터공학]
 ---
 
 # 1. 레포지토리 클론
