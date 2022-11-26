@@ -44,6 +44,7 @@ Docstring은 모듈, 클래스, 메서드 또는 함수에 대해 문서를 제�
 내가 작성한 컴포넌트를 다른 엔지니어가 사용하려고 할 때 docstring을 보고 동작방식과 입출력 정보 등을 확인할 수 있어야 한다.
 
 - example.py
+
 ```py
 class CustomClass:
 """
@@ -55,11 +56,13 @@ class CustomClass:
         함수의 문서화 내용을 입력합니다.
         """
         # ... 코드  ...
+
 ```
 
 이를 이용하여 다음과 같은 문서를 만들 수 있다.
 
 - words.py
+
 ```py
 """
     URL로부터 파일을 가져와 단어를 print 함.
@@ -110,15 +113,19 @@ def main(url):
 
 if __name__ == '__main__':
     main(sys.argv[1])
+
 ```
 
 - 모듈 불러오기
+
 ```py
 > import words
 > help(words)
+
 ```
 
 - 출력결과
+
 ```py
 Help on module words:
 
@@ -146,9 +153,10 @@ FUNCTIONS
         items를 print
         :param items: 
         :return:
-
+        
 FILE
     c:\users\cpprh\desktop\words.py
+
 ```
 
 
@@ -156,6 +164,7 @@ FILE
 코드 사용자에게 함수 인자로 어떤 값이 와야하는지 힌트를 주는 역할을 한다.
 
 - annotations.py
+
 ```py
 @dataclass
 class Point:
@@ -171,6 +180,7 @@ def locate(latitude: float, longitude: float) -> Point:
 파이썬이 타입을 검사하거나 강제하지는 않는다. 하지만 어노테이션을 사용하면 가독성을 가지는 코드를 작성할 수 있다.
 
 - bad_case.py
+
 ```py
 def launch_task(delay_in_seconds):
     ...
@@ -180,6 +190,7 @@ def launch_task(delay_in_seconds):
 허용 가능한 지연 시간은 몇 초일까? 분수를 입력해도 되는 걸까?와 같은 궁금증을 해결해줄 수 없다.
 
 - good_case.py
+
 ```py
 Seconds = float
 def launch_task(delay: Seconds):
@@ -197,7 +208,7 @@ def process_clients(clients: list):
 ```
 
 ```py
-def process_clients(clients: list[tuple[int, str]):
+def process_clients(clients: list[tuple[int, str]]):
     ...
 ```
 
