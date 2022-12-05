@@ -97,3 +97,67 @@ True
 > A[2][:3]
 Cpp
 ```
+
+## 컨텍스트 관리자 (context manager)
+컨텍스트 관리자는 파이썬이 제공하는 유용한 기능이다.
+일반적으로 리소스 관리와 관련하여 컨텍스트 관리자를 자주 볼 수 있다.
+예를 들어 파일을 열면 파일 디스크립터 누수를 막기 위해 작업이 끝나면 적절히 닫히길 기대한다. 또는 서비스나 소켓에 대한 연결을 열었을 때도 적절하게 닫거나 임시 파일을 제거하는 등의 작업을 해야한다.
+
+이 모든 경우에 일반적으로 할당된 모든 리소스를 해제해야 한다. 모든 것이 잘 처리되었을 경우의 해제는 쉽지만 예외가 발생하거나 오류를 처리해야 하는 경우는 어떻게 될까?
+가능한 모든 조합과 실행 경로를 처리하여 디버깅하는 것이 어렵다는 점을 감안할 때 이 문제를 해결하는 가장 일반적인 방법은 `finally` 블록에 정리 코드를 넣는 것이다.
+
+- context_manager_example1.py
+
+```py
+fd = open(filename)
+try:
+  process_file(fd)
+finally:
+  fd.close()
+```
+
+- context_manager_example2.py
+
+```py
+with open(filename) as fd:
+  process_file(fd)
+```
+
+전자는 일반적인 간단한 예제 코드이고 후자는 파이썬스러운 방법의 구현이다.
+
+후자의 `with`  문은 컨텍스트 관리자로 진입하게 한다. 이번 예제의 경우 `open` 함수는 컨텍스트 관리자 프로토콜을 구현한다. 즉 예외가 발생한 경우에도 파일이 자동으로 닫힌다.
+
+컨텍스트 관리자는 `__enter__`와 `__exit__` 매직 메서드로 구성된다.
+
+with 문은 __enter__ 메서드를 호출하고 이 메서드의 반환값은 as 이후에 지정된 변수에 할당된다.
+
+해당 블록(스코프)의 마지막줄의 실행이 끝난다면 __exit__ 컨텍스트 메서드를 호출한다.
+
+컨텍스트 관리자 블록(스코프) 내에 예외나 오류가 있는 경우에도 __exit__ 메서드가 호출되므로 안전하게 실행이 가능하다. 
+
+컨텍스트 관리자의 사용 예시를 보자.
+
+- Using_context_ex1.py
+
+```py
+def stop_database():
+  run("systemctl stop postgresql.service")
+
+def start_database():
+  run("systemctl start postgresql.service")
+
+class DBHandler:
+  def __enter__(self):
+    stop_database()
+    return self
+
+  def __exit__(self, exc_type, ex_value, ex_traceback):
+    start_database()
+
+  def db_backup():
+    run("pg_dump database")
+
+  def main():
+    with DBHandler():
+      db_backup()
+```
