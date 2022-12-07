@@ -20,10 +20,10 @@ timezone: Asia/Seoul
 
 title: NohGod Blog # the main title
 
-tagline: 여기는 서브타이틀의 자리 # it will display as the sub-title
+tagline: 컴공의 공부 자극용 블로그 # it will display as the sub-title
 
 description: >- # used by seo meta and the atom feed
-  사이트 설명
+  컴공의 공부 자극용 블로그
 
 # fill in the protocol & hostname for your site, e.g., 'https://username.github.io'
 url: "https://nohgod.github.io"
@@ -31,14 +31,14 @@ url: "https://nohgod.github.io"
 github:
   username: NohGod # change to your github username
 
-twitter:
-  username: twitter_username # change to your twitter username
+#twitter:
+# username: twitter_username # change to your twitter username
 
 social:
   # Change to your full name.
   # It will be displayed as the default author of the posts and the copyright owner in the Footer
   name: NohGod
-  email: example@domain.com # change to your email address
+  email: nohdi1991@naver.com # change to your email address
   links:
     # The first element serves as the copyright owner's link
     - https://github.com/NohGod # change to your github homepage
