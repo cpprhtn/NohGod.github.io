@@ -69,14 +69,14 @@ True
 
 ```py
 class Items:
-	def __init__(self, *values):
-		self._values = values
+    def __init__(self, *values):
+	      self._values = values
 
-	def __len__(self):
-		return len(self._values)
+    def __len__(self):
+	      return len(self._values)
 
-	def __getitem__(self, item):
-		return self._values.__getitem__(item)
+    def __getitem__(self, item):
+	      return self._values.__getitem__(item)
 ```
 
 - 사용 예시
@@ -99,28 +99,31 @@ Cpp
 ```
 
 ## 컨텍스트 관리자 (context manager)
-컨텍스트 관리자는 파이썬이 제공하는 유용한 기능이다.
-일반적으로 리소스 관리와 관련하여 컨텍스트 관리자를 자주 볼 수 있다.
-예를 들어 파일을 열면 파일 디스크립터 누수를 막기 위해 작업이 끝나면 적절히 닫히길 기대한다. 또는 서비스나 소켓에 대한 연결을 열었을 때도 적절하게 닫거나 임시 파일을 제거하는 등의 작업을 해야한다.
+컨텍스트 관리자는 파이썬이 제공하는 유용한 기능이다. 
+일반적으로 리소스 관리와 관련하여 컨텍스트 관리자를 자주 볼 수 있다. 
+예를 들어 파일을 열면 파일 디스크립터의 누수를 막기 위해 작업이 끝나면 적절히 닫히길 기대한다. 또는 서비스나 소켓에 대한 연결을 열었을 때도 적절하게 닫거나 임시 파일을 제거하는 등의 작업을 해야한다.
 
 이 모든 경우에 일반적으로 할당된 모든 리소스를 해제해야 한다. 모든 것이 잘 처리되었을 경우의 해제는 쉽지만 예외가 발생하거나 오류를 처리해야 하는 경우는 어떻게 될까?
-가능한 모든 조합과 실행 경로를 처리하여 디버깅하는 것이 어렵다는 점을 감안할 때 이 문제를 해결하는 가장 일반적인 방법은 `finally` 블록에 정리 코드를 넣는 것이다.
+
+이 문제를 해결하는 가장 일반적인 방법은 `finally` 블록에 정리 코드를 넣는 것이다.
+
+다음 두 예시를 보자.
 
 - context_manager_example1.py
 
 ```py
 fd = open(filename)
 try:
-  process_file(fd)
+    process_file(fd)
 finally:
-  fd.close()
+    fd.close()
 ```
 
 - context_manager_example2.py
 
 ```py
 with open(filename) as fd:
-  process_file(fd)
+    process_file(fd)
 ```
 
 전자는 일반적인 간단한 예제 코드이고 후자는 파이썬스러운 방법의 구현이다.
@@ -133,31 +136,41 @@ with 문은 __enter__ 메서드를 호출하고 이 메서드의 반환값은 as
 
 해당 블록(스코프)의 마지막줄의 실행이 끝난다면 __exit__ 컨텍스트 메서드를 호출한다.
 
-컨텍스트 관리자 블록(스코프) 내에 예외나 오류가 있는 경우에도 __exit__ 메서드가 호출되므로 안전하게 실행이 가능하다. 
+컨텍스트 관리자 블록 내에 예외나 오류가 있는 경우에도 __exit__ 메서드가 호출되므로 안전하게 실행이 가능하다. 
 
-컨텍스트 관리자의 사용 예시를 보자.
+### 컨텍스트 관리자 구현
 
-- Using_context_ex1.py
+다음은 파일을 여는 컨텍스트 관리자 예제 코드입니다.
+
+- FileManager_ex.py
 
 ```py
-def stop_database():
-  run("systemctl stop postgresql.service")
+class FileManager(object):
+    def __init__(self, file_name, method):
+        self.fd = open(file_name, method)
 
-def start_database():
-  run("systemctl start postgresql.service")
+    def __enter__(self):
+        return self.fd
 
-class DBHandler:
-  def __enter__(self):
-    stop_database()
-    return self
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        self.fd.close()
 
-  def __exit__(self, exc_type, ex_value, ex_traceback):
-    start_database()
-
-  def db_backup():
-    run("pg_dump database")
-
-  def main():
-    with DBHandler():
-      db_backup()
+with FileManager('example.txt', 'w') as opened_file:
+    opened_file.write('Hello!')
 ```
+
+동작순서.
+1. FileManager 클래스의 __init__()이 호출되며 open 함수로 파일을 읽어옴
+2. __enter__ 메서드의 반환 값으로 파일 객체 반환되며 Context에서 opened_file라는 변수에 저장됨
+3. opened_file 파일 객체의 write() 함수를 사용하여 파일을 작성함
+4. Context 내의 모든 코드가 실행되면 __exit__()이 호출되며 파일 객체가 닫힘
+
+이제 만든 클래스를 사용하여 파일을 작성해보자.
+
+```py
+from FileManager_ex import FileManager
+with FileManager("test.py", "w") as opened_file:
+	  opened_file.write("print('컨텍스트 관리자 클래스로 구현하여 파일 작성 성공')")
+```
+
+FileManager_ex.py와 같은 경로에 test.py가 생성되어 원하는 구문이 작성된 것을 확인할 수 있다.
