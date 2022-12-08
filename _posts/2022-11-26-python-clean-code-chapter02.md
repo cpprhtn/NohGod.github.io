@@ -154,9 +154,6 @@ class FileManager(object):
 
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.fd.close()
-
-with FileManager('example.txt', 'w') as opened_file:
-    opened_file.write('Hello!')
 ```
 
 동작순서.
